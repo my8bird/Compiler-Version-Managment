@@ -1,0 +1,24 @@
+~/.gvm/config.list
+
+
+INSTALL
+-------
+sudo ./install.sh
+
+This will find your current gcc and g++ locations and place scripts in there place that will determine which version to run.  In addition the directory /etc/gvm will be created with the configuration file in it.
+
+Setting version to use
+----------------------
+There are two ways to set the version to use.  Set the current one for your shell or set the version to always use in a directory.  To set the version to use for your shell simply run:
+
+`gvm gcc=44 g++=44`
+
+To set the version to always use for a given directory run:
+
+`gvm gcc=44 g++=44 .`
+
+Where the last argument is the directory to place the setting on.
+
+View all Overridden Directories
+-------------------------------
+`gvm list`

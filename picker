@@ -1,0 +1,34 @@
+#! /bin/bash
+
+tool=$1
+shift
+
+path=`pwd`
+start_path=$path
+
+while [ ${#path} -gt 1 ]
+do
+   if [ -e .gvm ]; then 
+      b_path=`grep $tool .gvm`
+      if [ $b_path ]; then
+         cd $start_path
+         $b_path $@
+         exit
+      fi
+   fi
+   
+   # go up the tree to find any other settings
+   cd ..
+   path=`pwd`
+done
+
+# no override was found so use the latest and greatest found /usr/bin
+# -r reverses the ls ordering so that the greatest (string compare) is given first
+tools=`ls -r /usr/bin/$tool*`
+for t in $tools
+do
+   cd $start_path
+   $t $@
+   exit
+done
+

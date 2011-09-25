@@ -1,0 +1,5 @@
+#! /bin/sh
+
+cp picker gcc g++ /usr/bin
+chmod 777 picker gcc g++
+
